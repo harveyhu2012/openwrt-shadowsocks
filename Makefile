@@ -9,12 +9,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=shadowsocksR-libev
-PKG_VERSION:=2.4.5
-PKG_RELEASE:=2
+PKG_VERSION:=2.4.8
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/harveyhu2012/shadowsocks-libev
-PKG_SOURCE_VERSION:=d4eae1daba7b25b2040a0fb445ac891a2ddccc74
+PKG_SOURCE_URL:=https://github.com/breakwa11/shadowsocks-libev
+#PKG_SOURCE_VERSION:=63f357a4b507364692bec02ecf82f056376dd663 //Stable?
+PKG_SOURCE_VERSION:=f3a923ee38a1fed6b81336bb90b83e37412ee2bb
+
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
@@ -35,7 +37,7 @@ define Package/shadowsocksR-libev/Default
 	SECTION:=net
 	CATEGORY:=Network
 	TITLE:=Lightweight Secured Socks5 Proxy $(2)
-	URL:=https://github.com/shadowsocks/shadowsocks-libev
+	URL:=https://github.com/breakwa11/shadowsocks-libev
 	VARIANT:=$(1)
 	DEPENDS:=$(3)
 endef
@@ -81,7 +83,7 @@ endef
 
 Package/shadowsocksR-libev-spec-polarssl/postinst = $(Package/shadowsocksR-libev-spec/postinst)
 
-CONFIGURE_ARGS += --disable-ssp
+CONFIGURE_ARGS += --disable-documentation --disable-ssp
 
 ifeq ($(BUILD_VARIANT),polarssl)
 	CONFIGURE_ARGS += --with-crypto-library=polarssl

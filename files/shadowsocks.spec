@@ -35,7 +35,8 @@ gen_config_file() {
 		    "timeout": $(uci_get_by_name $1 timeout 60),
 		    "method": "$(uci_get_by_name $1 encrypt_method)",
 		    "protocol": "$(uci_get_by_name $1 protocol)",
-		    "obfs": "$(uci_get_by_name $1 obfs)"
+		    "obfs": "$(uci_get_by_name $1 obfs)",
+			"obfs_param": "$(uci_get_by_name $1 obfs_param)"
 		}
 EOF
 }
